@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 23/09/2015 10:10:04 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Modelos.Bibliotecas" table="bibliotecas" catalog="biblioteca1" optimistic-lock="version">
+        <id name="idBiblioteca" type="java.lang.Integer">
+            <column name="idBiblioteca" />
+            <generator class="identity" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" length="45" />
+        </property>
+        <property name="direccion" type="string">
+            <column name="direccion" length="45" />
+        </property>
+        <property name="ciudad" type="string">
+            <column name="ciudad" length="45" />
+        </property>
+        <property name="pais" type="string">
+            <column name="pais" length="45" />
+        </property>
+        <set name="usuarioses" table="usuarios" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="biblioteca" not-null="true" />
+            </key>
+            <one-to-many class="Modelos.Usuarios" />
+        </set>
+        <set name="libroses" table="libros" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="biblioteca" not-null="true" />
+            </key>
+            <one-to-many class="Modelos.Libros" />
+        </set>
+    </class>
+</hibernate-mapping>

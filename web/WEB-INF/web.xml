@@ -4,9 +4,17 @@
         <servlet-name>SELibros</servlet-name>
         <servlet-class>Controladores.Libros</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SEUsuarios</servlet-name>
+        <servlet-class>Controladores.SEUsuarios</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SELibros</servlet-name>
         <url-pattern>/Libros</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SEUsuarios</servlet-name>
+        <url-pattern>/Usuarios</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

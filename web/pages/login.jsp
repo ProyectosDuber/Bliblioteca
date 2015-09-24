@@ -46,6 +46,13 @@
                     <div  class="panel-body">
                         <form id="formulario" role="form" method="POST" action="Usuarios?action=iniciar_sesion">
                             <fieldset>
+                                 <div class="form-group">
+                                           
+                                     <select name="tipo" id="tipo" class="form-control">
+                                                <option value="admin">Administrador</option>
+                                                <option value="cliente">Cliente</option>
+                                            </select>
+                                        </div>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="Usuario" name="usuario" id="usuario" type="text" autofocus>
                                 </div>
@@ -82,17 +89,19 @@
       
       $("#formulario").submit(function (){
           var datosForm =$(this).serialize();
-          $.post("Usuarios?action=iniciar_sesion",datosForm,procesar).error(falla);
+          $.post("../Usuarios?action=iniciar_sesion",datosForm,procesar).error(falla);
           return false;
       });
       
      function procesar(datos){
+         console.log(datos);
         if(datos=="valido"){
-            window.locationf="Admin/";
+            
+            window.location="Admin/";
         }else if(datos="invalido"){
        $('fieldset div').removeClass("form-group");
        $('fieldset div').addClass("form-group has-error");
-       $("div h3").html("<h3 class='panel-title' style='color: red'>Usuario o contraseña incorrectos</h3>");
+       $("div h3").html("<h3 class='panel-title' style='color: red'>Usuario, tipo o contraseña incorrectos</h3>");
         }else{
             $("div h3").html("<h3 class='panel-title' style='color: red'>Upps !! error inesperado por favor, intentalo mas tarde</h3>");
         }
